@@ -27,7 +27,7 @@ python manage.py run_rectangle_demo
 measures the time taken by `Order.objects.create()`. The call blocks for ≥ 2 seconds,
 proving the caller waits for all receivers to complete before continuing.
 
-**Sample output:**
+**output:**
 ```
 [Q1] Receiver started for 'q1_test' — sleeping 2 seconds...
 [Q1] Receiver finished for 'q1_test'
@@ -45,7 +45,7 @@ proving the caller waits for all receivers to complete before continuing.
 The management command also logs the caller's thread ID before the save. Both IDs are
 identical, confirming the receiver executes in the caller's thread.
 
-**Sample output:**
+**output:**
 ```
 [Q2] Caller   thread ID : 139669712961664
 [Q2] Receiver thread ID : 139669712961664
@@ -64,7 +64,7 @@ and then deliberately raises an exception to force a rollback. After the rollbac
 the original Order **nor** the companion Order exists in the database — both were rolled back
 together because they shared the same transaction.
 
-**Sample output:**
+**output:**
 ```
 [Q3] Orders with 'txn_test' prefix before: 0
 [Q3] Receiver created a companion Order inside the signal handler
